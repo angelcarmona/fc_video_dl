@@ -23,7 +23,10 @@ def get_video_links(url):
         for line in r.text.split('\n'):
             if 'verVideo(\'' in line:
                 video_id = line.split('\'')[1]
-                links.append(YOUTUBE_URL_FORMAT.format(video_id))
+                link = YOUTUBE_URL_FORMAT.format(video_id)
+
+                if link not in links:
+                    links.append(link)
 
     return links
 
